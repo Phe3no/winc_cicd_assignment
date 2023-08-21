@@ -14,7 +14,9 @@
       Although there are a number of third party actions to be found, I have
       decided not to use them.<br />
       For this I used a private server from DigitalOcean. <br />
-      Get it up and running, then follow the steps I made.
+      DON'T forget to push your content from your local machine go a new
+      repository on git, and clone this repository at the erver side. <br />
+      When all of this is up and running, follow the steps I made.
     </p>
 
     <h3>Step 1: Generate an SSH Key</h3>
@@ -97,8 +99,14 @@
       Create a new secret a github as descriped before. <br />
       For the hostname use <em>SSH_HOST</em>, in the value field enter the ip
       adress of your server. <br />
-      For the username use <em>SSH_USER</em>, in the value field enter tour
-      username. <br />
+      For the username use <em>SSH_USER</em>, in the value field enter your
+      <em>server</em> username. <br />
+      Create a secret for the workdirectory at the host, the directory where you
+      cloned the repository to. <br />
+      Here i used <em>WORK_DIR</em>, in the value field enter your workdirectory
+      path, from <em>~/..../..../</em> exclude the map where <em>main.py</em> is
+      in. The last secret I used is <em>MAIN_BRANCH</em>, in the value field
+      enter the branch you wish to track, usually <em>main</em>.
     </p>
 
     <h3>Step 5: Writing the Github workflow</h3>
