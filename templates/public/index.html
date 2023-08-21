@@ -122,78 +122,7 @@
       possibility for you to give your own interpretation. I will certainly not
       repeat myself.
     </p>
-    <code>
-      name: remote update <br />
-      on: push <br />
-      jobs: <br />
-      job1: <br />
-      name: CI Project <br />
-      # Specify on which operating system we want this workflow to run <br />
-      runs-on: ubuntu-latest <br />
-      # The steps that will be excuted <br />
-      steps: <br />
-      - name: Checkout repository <br />
-      uses: actions/checkout@v3 <br />
-      - name: Setup Python 3.11 <br />
-      uses: actions/setup-python@v3 br with: <br />
-      python-version: "3.11.0" <br />
-      - name: Install Dependencies <br />
-      run: pip install -r requirements.txt <br />
-      - name: Run tests <br />
-      run: python -m pytest <br />
-
-      job2: <br />
-      name: Job 2 <br />
-      # runs only if the steps of job1 succeeded <br />
-      needs: job1 <br />
-      # Specify on which operating system we want this workflow to run <br />
-      runs-on: ubuntu-latest <br />
-      # The steps that will be excuted <br />
-      steps: <br />
-      - name: Configure SSH connection <br />
-      env: <br />
-      SSH_AUTH_SOCK: /tmp/ssh_agent.sock <br />
-      SSH_KEY: ${{ secrets.SSH_PRIVATE_SECRET_KEY }} <br />
-      run: | <br />
-      mkdir -p ~/.ssh/ <br />
-      ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts <br />
-      echo "$SSH_KEY" > ~/.ssh/github_actions <br />
-      chmod 600 ~/.ssh/github_actions <br />
-      ssh-agent -a $SSH_AUTH_SOCK > /dev/null <br />
-      ssh-add ~/.ssh/github_actions <br />
-
-      - name: Connect and pull <br />
-      env: <br />
-      SSH_AUTH_SOCK: /tmp/ssh_agent.sock <br />
-      run: <br />
-      ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{
-      secrets.WORK_DIR }} <br />
-      && git checkout ${{ secrets.MAIN_BRANCH }} <br />
-      && git pull <br />
-      && exit" <br />
-
-      - name: Restart app <br />
-      env: <br />
-      SSH_AUTH_SOCK: /tmp/ssh_agent.sock <br />
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} systemctl restart
-      winc_cicd_assignment <br />
-
-      - name: cleanup <br />
-      run: rm -rf ~/.ssh <br />
-
-      job3: <br />
-      name: Job 3 <br />
-      # runs only if the steps of job2 succeeded <br />
-      needs: job2 <br />
-      # now it will always run but waits for job2 to be finished even wenn it
-      fails <br />
-      if: ${{ always() }} <br />
-      runs-on: ubuntu-latest <br />
-      # The steps that will be excuted <br />
-      steps: <br />
-      - name: Thank you message <br />
-      run: echo "Thanks for everything!" <br />
-    </code>
+    <code> </code>
   </article>
 </main>
 {% endblock%}
