@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 <!-- title -->
-{% block title %}About{% endblock %}
+{% block title %}Calculations{% endblock %}
 <!-- content -->
 {% block content%}
 <main id="main-area">
@@ -20,32 +20,34 @@
   </section>
   <article>
     {% if Number_1 != None and number_2 != None %}
-    <p>
-      The solution of the calculation
-      <span> {{ number_1 }} + {{ number_2 }} </span> =
-      <span>{{ add_nums }} </span>
-    </p>
-    <p>
-      The solution of the calculation
-      <span> {{ number_1 }} - {{ number_2 }} </span> =
-      <span>{{ substract_nums }}</span>
-    </p>
-    <p>
-      The solution of the calculation
-      <span> {{ number_1 }} * {{ number_2 }} </span> =
-      <span>{{ multiply_nums }}</span>
-    </p>
-    <p>
-      The solution of the calculation
-      <span> {{ number_1 }} / {{ number_2 }} </span> =
-      <span>{{ divide_nums }}</span>
-    </p>
-    <hr />
-    <p>
-      The remainder of the calculation
-      <span> {{ number_1 }} % {{ number_2 }} </span> =
-      <span>{{ remainder_nums }}</span>
-    </p>
+    <div class="results">
+      <p>
+        The solution of the calculation
+        <span> {{ number_1 }} + {{ number_2 }} </span> =
+        <span>{{ add_nums }} </span>
+      </p>
+      <p>
+        The solution of the calculation
+        <span> {{ number_1 }} - {{ number_2 }} </span> =
+        <span>{{ substract_nums }}</span>
+      </p>
+      <p>
+        The solution of the calculation
+        <span> {{ number_1 }} * {{ number_2 }} </span> =
+        <span>{{ multiply_nums }}</span>
+      </p>
+      <p>
+        The solution of the calculation
+        <span> {{ number_1 }} / {{ number_2 }} </span> =
+        <span>{{ divide_nums }}</span>
+      </p>
+      <hr />
+      <p>
+        The remainder of the calculation
+        <span> {{ number_1 }} % {{ number_2 }} </span> =
+        <span>{{ remainder_nums }}</span>
+      </p>
+    </div>
     {% endif %}
   </article>
 </main>

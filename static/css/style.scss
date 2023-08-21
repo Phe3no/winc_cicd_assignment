@@ -137,7 +137,11 @@ a {
     & p {
       color: $blue;
       padding: 6px 0;
-      text-align: center;
+    }
+    & .results {
+      & p {
+        text-align: center;
+      }
       & span {
         color: $rose;
         font-size: 1.2em;

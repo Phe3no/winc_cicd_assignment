@@ -125,9 +125,11 @@ a {
 #main-area article p {
   color: #354360;
   padding: 6px 0;
+}
+#main-area article .results p {
   text-align: center;
 }
-#main-area article p span {
+#main-area article .results span {
   color: #e1306d;
   font-size: 1.2em;
 }
