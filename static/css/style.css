@@ -124,7 +124,12 @@ a {
 }
 #main-area article p {
   color: #354360;
-  padding: 5px 0;
+  padding: 6px 0;
+  text-align: center;
+}
+#main-area article p span {
+  color: #e1306d;
+  font-size: 1.2em;
 }
 #main-area article code {
   color: #41bd9a;
@@ -146,6 +151,10 @@ a {
   color: #e1306d;
   padding-bottom: 1em;
   text-align: center;
+}
+#form-area h3 {
+  color: #354360;
+  padding: 20px 0;
 }
 #form-area form {
   display: flex;

@@ -5,9 +5,9 @@
 {% block content%}
 <main id="main-area">
   <section id="form-area">
-    <h1>Caluclation page</h1>
+    <h2>Calculation page</h2>
     <hr />
-    <p>Lets do some calculations. Enter 2 numbers!</p>
+    <h3>Lets do some calculations. Enter 2 numbers!</h3>
     <form method="post">
       <label for="number_1">Number 1</label>
       <input type="number" name="number_1" id="number_1" required />
@@ -17,13 +17,37 @@
       <button type="submit" name="submit-numbers">Calculate</button>
     </form>
     <hr />
-    <p>The value of Number 1 <span> + </span> Number 2 = {{ add }}</p>
-    <p>The value of Number 1 <span> - </span> Number 2 = {{ subtract }}</p>
-    <p>The value of Number 1 <span> * </span> Number 2 = {{ multiply }}</p>
-    <p>The value of Number 1 <span> / </span> Number 2 = {{ devide }}</p>
-    <hr />
-    <p>The remainder of Number 1 <span> % </span> Number 2 = {{ mudus }}</p>
   </section>
+  <article>
+    {% if Number_1 != None and number_2 != None %}
+    <p>
+      The solution of the calculation
+      <span> {{ number_1 }} + {{ number_2 }} </span> =
+      <span>{{ add_nums }} </span>
+    </p>
+    <p>
+      The solution of the calculation
+      <span> {{ number_1 }} - {{ number_2 }} </span> =
+      <span>{{ substract_nums }}</span>
+    </p>
+    <p>
+      The solution of the calculation
+      <span> {{ number_1 }} * {{ number_2 }} </span> =
+      <span>{{ multiply_nums }}</span>
+    </p>
+    <p>
+      The solution of the calculation
+      <span> {{ number_1 }} / {{ number_2 }} </span> =
+      <span>{{ divide_nums }}</span>
+    </p>
+    <hr />
+    <p>
+      The remainder of the calculation
+      <span> {{ number_1 }} % {{ number_2 }} </span> =
+      <span>{{ remainder_nums }}</span>
+    </p>
+    {% endif %}
+  </article>
 </main>
 
 {% endblock %}
