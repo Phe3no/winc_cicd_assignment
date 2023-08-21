@@ -51,7 +51,7 @@ jobs:
       - name: Restart app
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} systemctl restart farm
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} systemctl restart winc_cicd_assignment
 
       - name: cleanup
         run: rm -rf ~/.ssh
