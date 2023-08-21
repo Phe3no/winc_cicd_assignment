@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+<!-- title -->
+{% block title %}About{% endblock %}
+<!-- content -->
+{% block content%}
+<main id="main-area">
+  <section id="form-area">
+    <h1>Caluclation page</h1>
+    <hr />
+    <p>Lets do some calculations. Enter 2 numbers!</p>
+    <form method="post">
+      <label for="number_1">Number 1</label>
+      <input type="number" name="number_1" id="number_1" required />
+      <label for="number_2">Number 2</label>
+      <input type="number" name="number_2" id="number_2" required />
+
+      <button type="submit" name="submit-numbers">Calculate</button>
+    </form>
+    <hr />
+    <p>The value of Number 1 <span> + </span> Number 2 = {{ add }}</p>
+    <p>The value of Number 1 <span> - </span> Number 2 = {{ subtract }}</p>
+    <p>The value of Number 1 <span> * </span> Number 2 = {{ multiply }}</p>
+    <p>The value of Number 1 <span> / </span> Number 2 = {{ devide }}</p>
+    <hr />
+    <p>The remainder of Number 1 <span> % </span> Number 2 = {{ mudus }}</p>
+  </section>
+</main>
+
+{% endblock %}
