@@ -17,4 +17,4 @@ I have linked the server to a domain so that you can easily access the website.
 
 ### www.eastrend.nl
 
-Before this one I didn't bother to see if I could find a lets-encrypt certificate for the server. The website therefore seems unsafe, but no data is requested.
+Before this one I didn't bother to see if I could find a lets-encrypt certificate for the server. The website therefore seems unsafe, but no private data is requested.
