@@ -1,36 +1,51 @@
 name: remote update
 
+# in this workflow, which we named --remote update-- the workflow will start whenever a push is made to the repository
 on: push
 jobs:
+  # jobs run in parallel by default
   job1:
     name: CI Project
     # Specify on which operating system we want this workflow to run
     runs-on: ubuntu-latest
-    # The steps that will be excuted
+    # The steps that will be excuted, steps are sheduled, first things first
+    # give each step a name
     steps:
+      # the first step
       - name: Checkout repository
         uses: actions/checkout@v3
+      # the second step
       - name: Setup Python 3.11
+        # setup python version 3.11.0
         uses: actions/setup-python@v3
         with:
           python-version: "3.11.0"
+      # the third step
       - name: Install Dependencies
+        # install the dependencies which are mentioned in the requirements.txt
         run: pip install -r requirements.txt
+      # the last step
       - name: Run tests
+        # because our test are in a folder which can't be seen as a module by python by default, we detour and don't call pytest directly
         run: python -m pytest
 
   job2:
     name: Job 2
-    # runs only if the steps of job1 succeeded
+    # runs only if the steps of job1 succeeded by using --needs--
     needs: job1
-    # Specify on which operating system we want this workflow to run
+    # again specify on which operating system we want this workflow to run
     runs-on: ubuntu-latest
-    # The steps that will be excuted
     steps:
       - name: Configure SSH connection
+        # set a variable for the ssh agent
+        # set a variable for the private secret key
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           SSH_KEY: ${{ secrets.SSH_PRIVATE_SECRET_KEY }}
+        # run multiple lines, can be done after the -- | pipe -- symbol
+        # make a dir .ssh and transfer the known hosts from your server 
+        # after that echo the secret key in the file github_actions and change permissions for that file so only the owner can use it
+        # add the secret key to the ssh agent
         run: |
           mkdir -p ~/.ssh/
           ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
@@ -41,21 +56,27 @@ jobs:
 
       - name: Connect and pull
         env:
+          # get the data from the ssh-agent
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          # connect to the server, cd into the working directory, checkout to the main branch, pull the repository and exit
         run:
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }}
           && git checkout ${{ secrets.MAIN_BRANCH }}
           && git pull
           && exit"
 
+      # maybe I could have done the next two steps in the previous step, but i like to seperate things
       - name: Restart app
         env:
+          # set the variable with the data from the ssh-agent again
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          stop de applicatie op de server en start opnieuw
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} systemctl stop winc_cicd_assignment
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} systemctl restart winc_cicd_assignment
 
       - name: cleanup
+        # cleanup the .ssh directory
         run: rm -rf ~/.ssh
 
   job3:

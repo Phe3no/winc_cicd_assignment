@@ -13,9 +13,12 @@
     <p>
       Although there are a number of third party actions to be found, I have
       decided not to use them.<br />
-      For this I used a private server from DigitalOcean. <br />
-      DON'T forget to push your content from your local machine go a new
-      repository on git, and clone this repository at the erver side. <br />
+      For this I used a private server from DigitalOcean and assume that you
+      have your app running on this server <br />
+      So <em>DON'T</em> forget to push the necessary content from your local
+      machine to the repository on git, and clone this repository at the erver
+      side. So first setup the server side to access your repository, just like
+      you do with your local machine. <br />
       When all of this is up and running, follow the steps I made.
     </p>
 
@@ -81,8 +84,8 @@
     <code>nano github-actions</code>
     <p>
       Select evertything from <em>-----BEGIN .....</em> to
-      <em>.....PRIVATE KEY-----</em> and copy with <em>Esc and 6</em>. Then
-      paste it in the secret value at github and click <em>Add secret</em>.
+      <em>.....PRIVATE KEY-----</em> and copy. Then paste it in the secret value
+      at github and click <em>Add secret</em>.
       <br />
       You will find your new secret under the <em>Repository secrets</em>.
     </p>
@@ -116,13 +119,22 @@
       will run when triggered by an event in your repository (such as a puush
       request), they can be triggered manually, or at a defined schedule. <br />
       They are defined in the <em>.github/workflows</em> as a
-      <em>your_anem.yml</em> file. Underneath I show you my pretty basic yaml
+      <em>your_nem.yml</em> file. Underneath I show you my pretty basic yaml
       file. <br />
       In this file I have written the necessary comments, but I leave the
-      possibility for you to give your own interpretation. I will certainly not
-      repeat myself.
+      possibility for you to give your own interpretation. I will try not to
+      repeat comments for lines which I have already explained.
     </p>
-    <code> </code>
+    <img src="../static/images/job1.png" alt="github workflow job 1" />
+    <img src="../static/images/job2.png" alt="github workflow job 2" />
+    <h3>Conclusion</h3>
+    <hr />
+    <p>
+      In 5 steps we have created Continuous Integration and Continuous Delivery
+      with GitHub. Maybe this has given you some insights and learned something
+      from it. <br />
+      Thanks for reading!
+    </p>
   </article>
 </main>
 {% endblock%}
