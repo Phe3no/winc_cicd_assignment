@@ -43,7 +43,7 @@ jobs:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           SSH_KEY: ${{ secrets.SSH_PRIVATE_SECRET_KEY }}
         # run multiple lines, can be done after the -- | pipe -- symbol
-        # make a dir .ssh and transfer the known hosts from your server 
+        # make a dir .ssh and transfer the known hosts from your server
         # after that echo the secret key in the file github_actions and change permissions for that file so only the owner can use it
         # add the secret key to the ssh agent
         run: |
@@ -70,7 +70,7 @@ jobs:
         env:
           # set the variable with the data from the ssh-agent again
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-          stop de applicatie op de server en start opnieuw
+          # stop de applicatie on the server and start again
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} systemctl stop winc_cicd_assignment
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} systemctl restart winc_cicd_assignment
